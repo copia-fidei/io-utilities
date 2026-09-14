@@ -3,7 +3,6 @@ package com.epau.utilities.io.file.tar.gz;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.jetbrains.annotations.NonNls;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 
 import static java.util.logging.Logger.getLogger;
 
-@NonNls
 public class TarGzFile {
 
 	private static final Logger LOG = getLogger(TarGzFile.class.getName());
@@ -30,7 +28,7 @@ public class TarGzFile {
 	}
 
 	/**
-	 * @return the entries of the tar.gz file
+	 * @return all archive entries
 	 */
 	public Set<String> getEntries() throws IOException {
 		var entries = new HashSet<String>();
@@ -47,10 +45,8 @@ public class TarGzFile {
 	}
 
 	/**
-	 * Gets all entries of the tar.gz file.
-	 * The top level directory that all entries have is removed.
-	 *
-	 * @return the entries without the top level directory
+	 * @return all archive entries without the top level directory, e.g. "foo" instead of "my-app/foo".
+	 * This is intended for archives with a single root directory.
 	 */
 	public Set<String> getEntriesWithoutTopLevelDirectory() throws IOException {
 		var entries = new HashSet<String>();

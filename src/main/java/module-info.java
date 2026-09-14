@@ -1,5 +1,4 @@
 module com.epau.utilities.io{
-	requires org.jetbrains.annotations;
 	requires java.logging;
 	requires org.apache.commons.compress;
 
@@ -7,4 +6,6 @@ module com.epau.utilities.io{
 	exports com.epau.utilities.io.file.tar.gz;
 	exports com.epau.utilities.io.file.unix;
 	exports com.epau.utilities.io;
+
+//	requires org.junit.jupiter;
 }

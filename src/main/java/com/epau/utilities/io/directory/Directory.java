@@ -1,6 +1,5 @@
 package com.epau.utilities.io.directory;
 
-import org.jetbrains.annotations.NonNls;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -8,6 +7,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static java.lang.IO.println;
 import static java.nio.file.Files.exists;
 import static java.nio.file.Files.isDirectory;
 import static java.nio.file.Files.newDirectoryStream;
@@ -15,7 +15,6 @@ import static java.nio.file.Files.walk;
 import static java.util.logging.Logger.getLogger;
 import static java.util.stream.Collectors.toSet;
 
-@NonNls
 public class Directory {
 
 	private final Logger log = getLogger(Directory.class.getName());
@@ -61,5 +60,15 @@ public class Directory {
 			log.log(Level.WARNING, "Could not check if directory '" + directory + "' is empty", e);
 			return false;
 		}
+	}
+
+	// For testing
+	static void main() throws IOException {
+		var path      = Path.of("");
+		var directory = new Directory(path);
+		println("Path: " + path);
+		println("Descendants ↓");
+		directory.getDescendants().forEach(IO::println);
+		println("Empty? → " + directory.isEmpty());
 	}
 }
