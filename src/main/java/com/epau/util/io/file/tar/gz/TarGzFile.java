@@ -1,4 +1,4 @@
-package com.epau.utilities.io.file.tar.gz;
+package com.epau.util.io.file.tar.gz;
 
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;

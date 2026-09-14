@@ -1,4 +1,4 @@
-package com.epau.utilities.io.file.unix;
+package com.epau.util.io.file.unix;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

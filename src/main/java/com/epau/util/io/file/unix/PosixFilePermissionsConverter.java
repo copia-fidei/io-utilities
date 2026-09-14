@@ -1,4 +1,4 @@
-package com.epau.utilities.io.file.unix;
+package com.epau.util.io.file.unix;
 
 
 import java.nio.file.attribute.PosixFilePermission;

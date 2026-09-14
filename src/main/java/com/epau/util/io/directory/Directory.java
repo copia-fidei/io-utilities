@@ -1,4 +1,4 @@
-package com.epau.utilities.io.directory;
+package com.epau.util.io.directory;
 
 
 import java.io.IOException;

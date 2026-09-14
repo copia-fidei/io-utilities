@@ -1,11 +1,9 @@
-module com.epau.utilities.io{
+module com.epau.util.io{
 	requires java.logging;
 	requires org.apache.commons.compress;
 
-	exports com.epau.utilities.io.directory;
-	exports com.epau.utilities.io.file.tar.gz;
-	exports com.epau.utilities.io.file.unix;
-	exports com.epau.utilities.io;
-
-//	requires org.junit.jupiter;
+	exports com.epau.util.io.directory;
+	exports com.epau.util.io.file.tar.gz;
+	exports com.epau.util.io.file.unix;
+	exports com.epau.util.io;
 }

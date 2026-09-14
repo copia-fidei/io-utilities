@@ -1,4 +1,4 @@
-package com.epau.utilities.io;
+package com.epau.util.io;
 
 import java.io.IOException;
 import java.io.Writer;
