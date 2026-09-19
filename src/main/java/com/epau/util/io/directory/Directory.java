@@ -57,7 +57,7 @@ public class Directory {
 		try (var entries = newDirectoryStream(directory)) {
 			return !entries.iterator().hasNext();
 		} catch (IOException e) {
-			log.log(Level.WARNING, "Could not check if directory '" + directory + "' is empty", e);
+			log.log(Level.WARNING, "Could not determine if directory '" + directory + "' is empty", e);
 			return false;
 		}
 	}
