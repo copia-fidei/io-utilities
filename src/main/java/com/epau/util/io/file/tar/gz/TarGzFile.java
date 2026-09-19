@@ -8,6 +8,8 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -44,10 +46,34 @@ public class TarGzFile {
 		return entries;
 	}
 
-	/**
-	 * @return all archive entries without the top level directory, e.g. "foo" instead of "my-app/foo".
-	 * This is intended for archives with a single root directory.
-	 */
+	/// Returns all archive entries without the top-level directory.
+	///
+	/// For example, the archive
+	/// ```ls
+	/// curl-8.22.0.tar.gz
+	/// └── curl-8.22.0
+    /// 	├── tests/
+	/// 	├── src/
+	/// 	├── include/
+	/// 	├── curl/
+	/// 	│	├──header.h
+	/// 	│	└──curl.h
+	/// 	├──RELEASE-NOTES
+    /// 	└──README
+    /// ```
+	/// will give the entries
+	///
+	/// ```ls
+    /// tests/
+	/// src/
+	/// include/curl/header.h
+	/// include/curl/curl.h
+	/// README.md
+	/// RELEASE-NOTES
+	/// README
+	/// ```
+    ///
+	/// This method is only intended for archives with a single top-level directory.
 	public Set<String> getEntriesWithoutTopLevelDirectory() throws IOException {
 		var entries = new HashSet<String>();
 		try (var tarGzArchive = newTarGzArchiveInputStream()) {
@@ -73,5 +99,11 @@ public class TarGzFile {
 			name = name.substring(slash + 1);
 		}
 		return name;
+	}
+
+	static void main() throws IOException {
+		var is = Files.newInputStream(Path.of("/home/palantir/Downloads/curl-8.22.0.tar.gz"));
+		var tarGzFile = new TarGzFile(is);
+		tarGzFile.getEntriesWithoutTopLevelDirectory().forEach(System.out::println);
 	}
 }
