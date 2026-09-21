@@ -24,8 +24,8 @@ class PosixFilePermissionsConverterTest {
 			rw-r--r--    |   33188 | 0100644
 			rwxr-xr-x    |   33261 | 0100755
 			""")
-	void symbolicNotationFromDecimal(String expected, int decimal) {
-		assertEquals(expected, PosixFilePermissionsConverter.symbolicNotationFromDecimal(decimal));
+	void convertDecimalNumberToSymbolicNotation(String expected, int decimal) {
+		assertEquals(expected, PosixFilePermissionsConverter.convertDecimalNumberToSymbolicNotation(decimal));
 	}
 
 	@ParameterizedTest
@@ -54,7 +54,7 @@ class PosixFilePermissionsConverterTest {
 			rwxrwx---    |  770
 			rwxrwxrwx    |  777
 			""")
-	void symbolicNotationFromOctal(String expected, String octal) {
-		assertEquals(expected, PosixFilePermissionsConverter.symbolicNotationFromOctal(octal));
+	void convertOctalNumberStringToSymbolicNotation(String expected, String octal) {
+		assertEquals(expected, PosixFilePermissionsConverter.convertOctalNumberStringToSymbolicNotation(octal));
 	}
 }

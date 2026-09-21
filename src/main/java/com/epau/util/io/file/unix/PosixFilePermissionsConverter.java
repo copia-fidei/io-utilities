@@ -8,15 +8,15 @@ import java.util.Set;
 /// Converts octal or decimal numbers into POSIX file permission symbolic notation.
 public interface PosixFilePermissionsConverter {
 
-	static Set<PosixFilePermission> permissionsFromDecimal(int decimal) {
-		return PosixFilePermissions.fromString(symbolicNotationFromDecimal(decimal));
+	static Set<PosixFilePermission> getPermissionsFromDecimal(int decimal) {
+		return PosixFilePermissions.fromString(convertDecimalNumberToSymbolicNotation(decimal));
 	}
 
-	static String symbolicNotationFromDecimal(int decimal) {
-		return symbolicNotationFromOctal(Integer.toOctalString(decimal));
+	static String convertDecimalNumberToSymbolicNotation(int decimal) {
+		return convertOctalNumberStringToSymbolicNotation(Integer.toOctalString(decimal));
 	}
 
-	static String symbolicNotationFromOctal(String octal) {
+	static String convertOctalNumberStringToSymbolicNotation(String octal) {
 		if (octal.isEmpty()) {
 			throw new IllegalArgumentException("Octal number must not be empty");
 		}
